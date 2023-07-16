@@ -8,7 +8,7 @@ on:
       - .github/workflows/shark.yml
   pull_request: {}
 jobs:
-   build:
+   shark:
       name: wireshark
       runs-on: macos-latest
       steps:
@@ -18,3 +18,9 @@ jobs:
             brew install --cask wireshark-chmodbpf
          - name: try wireshark
            run: tshark -i en0 -c 5
+   pip:
+      name: pip stuff
+      runs-on: macos-latest
+      steps:
+         - name: running pip
+           run: pip --help
