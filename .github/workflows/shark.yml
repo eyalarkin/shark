@@ -10,10 +10,9 @@ on:
 jobs:
    build:
       name: wireshark
-      runs-on: ubuntu-latest
+      runs-on: macos-latest
       steps:
          - name: setup shark
-           run: |
-            sudo apt install -y tshark
-            sudo dpkg-reconfigure wireshark-common
-            tshark -i en0 -c 5
+           run: brew install wireshark
+         - name: try wireshark
+           run: tshark --help
