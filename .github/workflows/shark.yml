@@ -1,0 +1,17 @@
+name: capture
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - .github/workflows/shark.yml
+  pull_request: {}
+jobs:
+   build:
+      name: wireshark
+      runs-on: ubuntu-latest
+      steps:
+         - name: setup shark
+           run: |
+            sudo apt install -y tshark
