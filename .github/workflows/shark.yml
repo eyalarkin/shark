@@ -17,4 +17,4 @@ jobs:
             brew install wireshark
             brew install --cask wireshark-chmodbpf
          - name: try wireshark
-           run: tshark --help
+           run: tshark -i en0 -c 5
