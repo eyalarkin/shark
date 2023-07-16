@@ -15,4 +15,5 @@ jobs:
          - name: setup shark
            run: |
             sudo apt install -y tshark
-            tshark -i en0 -c 50
+            sudo dpkg-reconfigure wireshark-common
+            tshark -i en0 -c 5
