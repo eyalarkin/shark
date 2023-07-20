@@ -8,18 +8,26 @@ on:
       - .github/workflows/shark.yml
   pull_request: {}
 jobs:
-   shark:
-      name: wireshark
+   setup:
+      name: setup
       runs-on: macos-latest
       steps:
          - name: setup shark
            run: |
             brew install wireshark
             brew install --cask wireshark-chmodbpf
-         - name: Checkout repository
-           uses: actions/checkout@v2
+   run_shark:
+      needs: setup
+      name: run_shark
+      runs-on: macos-latest
+      steps:
          - name: try wireshark
            run: tshark -i en0 -a duration:60 -w capture.pcap
-         - name: pip
+   pip:
+      needs: setup
+      name: pip
+      runs-on: macos-latest
+      steps:
+         - name: install
            run: pip install pandas
 
