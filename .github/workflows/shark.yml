@@ -16,5 +16,12 @@ jobs:
            run: |
             brew install wireshark
             brew install --cask wireshark-chmodbpf
+         - name: Checkout repository
+           uses: actions/checkout@v2
          - name: try wireshark
            run: tshark -i en0 -a duration:60 -w capture.pcap & pip install pandas
+         - name: Upload tshark capture
+           uses: actions/upload-artifact@v2
+           with:
+             name: tshark-capture
+             path: capture.pcap
