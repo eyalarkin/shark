@@ -16,18 +16,5 @@ jobs:
            run: |
             brew install wireshark
             brew install --cask wireshark-chmodbpf
-   run_shark:
-      needs: setup
-      name: run_shark
-      runs-on: macos-latest
-      steps:
          - name: try wireshark
-           run: tshark -i en0 -a duration:60 -w capture.pcap
-   pip:
-      needs: setup
-      name: pip
-      runs-on: macos-latest
-      steps:
-         - name: install
-           run: pip install pandas
-
+           run: tshark -i en0 -a duration:60 -w capture.pcap & pip install pandas
